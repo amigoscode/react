@@ -1,8 +1,9 @@
 import './App.css';
 import Card from './components/Card';
+import Details from './components/Details';
 
 const App = () => {
-  return <Card title="Hello" />;
+  return <Details />;
 };
 
 export default App;
