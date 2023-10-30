@@ -1,5 +1,10 @@
-const Card = () => {
-  return <h1>Hello World</h1>;
+const Card = ({ title = 'Default title', description = 'desc' }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+  );
 };
 
 export default Card;
