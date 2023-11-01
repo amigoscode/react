@@ -1,15 +1,15 @@
-const Card = ({ title = 'Default title', description = 'desc' }) => {
+const Card = ({ video }) => {
   const handleClick = () => {
     alert('button clicked');
   };
 
-  return (
+  return video.genre === 'Horror' ? (
     <div>
-      <h1>{title}</h1>
-      <p>{description}</p>
+      <h1>{video.title}</h1>
+      <p>{video.description}</p>
       <button onClick={handleClick}>View</button>
     </div>
-  );
+  ) : null;
 };
 
 export default Card;

@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       {videos.map((video) => (
-        <Card key={video.id} title={video.title} description={video.description} />
+        <Card key={video.id} video={video} />
       ))}
     </>
   );
