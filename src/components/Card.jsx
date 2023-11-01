@@ -1,4 +1,4 @@
-const Card = ({ title = 'Default title', description = 'desc', children }) => {
+const Card = ({ title = 'Default title', description = 'desc' }) => {
   const handleClick = () => {
     alert('button clicked');
   };
@@ -7,7 +7,6 @@ const Card = ({ title = 'Default title', description = 'desc', children }) => {
     <div>
       <h1>{title}</h1>
       <p>{description}</p>
-      <div>{children}</div>
       <button onClick={handleClick}>View</button>
     </div>
   );
