@@ -4,10 +4,10 @@ import BlogPost from './components/BlogPost';
 import Card from './components/Card';
 // import Details from './components/Details';
 import { videos } from './video-data';
+import { ErrorBoundary } from 'react-error-boundary';
 
-const Details = lazy(async () => {
-  await new Promise((res) => setTimeout(res, 2000));
-  return import('./components/Details');
+const Details = lazy(() => {
+  return Promise.reject('fail');
 });
 
 const App = () => {
@@ -15,9 +15,9 @@ const App = () => {
 
   return (
     <>
-      <Suspense fallback={<div>Loading</div>}>
+      <ErrorBoundary fallback={<div>Something has gone wrong</div>}>
         <Details />
-      </Suspense>
+      </ErrorBoundary>
       {videos.map((video) => (
         <Card key={video.id} video={video} />
       ))}
