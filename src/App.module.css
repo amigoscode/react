@@ -1,11 +1,13 @@
 .wrapper {
-  color: black;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .light-mode {
   color: black;
-  background-color: white;
+  background-color: #f2f2e5;
 }
 
 .dark-mode {

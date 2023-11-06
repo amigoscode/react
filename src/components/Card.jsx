@@ -1,14 +1,18 @@
+import styles from './Card.module.css';
+
 const Card = ({ video }) => {
   const handleClick = () => {
     alert('button clicked');
   };
 
   return (
-    <div>
-      <h1>{video.title}</h1>
-      <p>{video.description}</p>
-      <button onClick={handleClick}>View</button>
-    </div>
+    <article className={styles.wrapper}>
+      <h1 className={styles.title}>{video.title}</h1>
+      <p className={styles.desc}>{video.description}</p>
+      <button onClick={handleClick} className={styles.button}>
+        View
+      </button>
+    </article>
   );
 };
 
