@@ -5,8 +5,8 @@ const Counter = () => {
   return (
     <section>
       <h1>{count}</h1>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => count > 0 && setCount(count - 1)}>-</button>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <button onClick={() => count > 0 && setCount((prevCount) => prevCount - 1)}>-</button>
     </section>
   );
 };

@@ -6,12 +6,7 @@ import Counter from './components/Counter';
 import CounterTwo from './components/CounterTwo';
 
 const App = () => {
-  const [toggle, setToggle] = useState(false);
-  return (
-    <div className={styles.wrapper}>
-      <button onClick={() => setToggle(!toggle)}>{toggle ? 'on' : 'off'}</button>
-    </div>
-  );
+  return <Counter />;
 };
 
 export default App;
