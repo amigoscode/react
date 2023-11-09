@@ -7,7 +7,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get('http://pokeapi.co/api/v2/pokemon');
+        const { data } = await axios.get('https://swapi.dev/api/people');
         setPokemonList(data);
       } catch (error) {
         console.error(error);
@@ -22,7 +22,12 @@ const App = () => {
       <>
         <h1>Pokemon</h1>
         {pokemonList.results.map((pokemon) => (
-          <div key={pokemon.name}>{pokemon.name}</div>
+          <article key={pokemon.name} style={{ marginTop: '1em' }}>
+            <h2>{pokemon.name}</h2>
+            <p>gender: {pokemon.gender}</p>
+            <p>birth year: {pokemon.birth_year}</p>
+            <p>eye color: {pokemon.eye_color}</p>
+          </article>
         ))}
       </>
     );
