@@ -1,40 +1,29 @@
-import Card from './components/Card';
-import { videos } from './video-data.js';
-import styles from './App.module.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const App = () => {
-  const [filteredVideos, setFilteredVideos] = useState(videos);
-  const [selectedGenre, setSelectedGenre] = useState('All');
-  const genres = ['Drama', 'Science Fiction', 'Horror', 'Action', 'All'];
-
-  const filterByGenre = (genre) => {
-    setSelectedGenre(genre);
-    if (genre === 'All') {
-      setFilteredVideos(videos);
-      return;
-    }
-    const filtered = videos.filter((video) => video.genre === genre);
-    setFilteredVideos(filtered);
-  };
-
-  return (
-    <>
-      <header className={styles.genres}>
-        {genres.map((genre, index) => (
-          <button onClick={() => filterByGenre(genre)} key={index}>
-            {genre}
-          </button>
+  const [pokemonList, setPokemonList] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://pokeapi.co/api/v2/pokemon');
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const data = await response.json();
+      setPokemonList(data);
+    };
+    fetchData();
+  }, []);
+  if (!pokemonList?.results) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      <>
+        <h1>Pokemon</h1>
+        {pokemonList.results.map((pokemon) => (
+          <div key={pokemon.name}>{pokemon.name}</div>
         ))}
-        <h1>Showing {selectedGenre} videos</h1>
-      </header>
-      <div className={styles.wrapper}>
-        {filteredVideos.map((video) => (
-          <Card key={video.id} video={video} />
-        ))}
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 };
 
 export default App;
