@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -5,10 +6,12 @@ const App = () => {
   const [pokemonList, setPokemonList] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://pokeapi.co/api/v2/pokemon');
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      const data = await response.json();
-      setPokemonList(data);
+      try {
+        const { data } = await axios.get('http://pokeapi.co/api/v2/pokemon');
+        setPokemonList(data);
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, []);
