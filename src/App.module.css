@@ -16,3 +16,14 @@
   color: white;
   background-color: black;
 }
+
+.genres {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.genres>button {
+  color: black;
+  cursor: pointer;
+  padding: .5rem;
+}
