@@ -1,28 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
+
+const initialState = {
+  countOne: 0,
+  countTwo: 0,
+};
+
+const counterReducer = (state, action) => {
+  const actions = {
+    increment: () => ({ ...state, countOne: state.countOne + 1 }),
+    decrement: () => ({ ...state, countTwo: state.countTwo - 1 }),
+    reset: () => initialState,
+  };
+
+  return actions[action] ? actions[action]() : state;
+};
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    console.log('component mounted');
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      console.log('counter value change');
-    }
-    return () => console.log('component has unmounted');
-  }, [count]);
+  const [state, dispatch] = useReducer(counterReducer, initialState);
 
   return (
     <section>
-      <h1>{count}</h1>
-      <h1>Count + 1:{count + 1}</h1>
-      <h1>Count + 2:{count + 2}</h1>
-      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
-      <button onClick={() => count > 0 && setCount((prevCount) => prevCount - 1)}>-</button>
+      <h1>{state.countOne}</h1>
+      <button onClick={() => dispatch('increment')}>+</button>
+      <h1>{state.countTwo}</h1>
+      <button onClick={() => dispatch('decrement')}>-</button>
+      <button onClick={() => dispatch('reset')}>reset</button>
     </section>
   );
 };
