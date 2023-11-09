@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CounterContext } from '../CounterContext';
 import Details from './Details';
+import useLifeCycleLog from '../useLifecycleLog';
 
 const Counter = () => {
   const [state, dispatch] = useContext(CounterContext);
+  useLifeCycleLog('Counter');
 
   return (
     <section>
