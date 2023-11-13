@@ -1,14 +1,6 @@
-import { Link, NavLink } from 'react-router-dom';
-
 const AboutUs = () => {
   return (
     <>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about-us" className={({ isActive }) => (isActive ? 'link-red' : 'link-black')}>
-          About Us
-        </NavLink>
-      </nav>
       <h1>About Us</h1>
       <p>
         Our company was founded in 2010, with a mission to provide a seamless video streaming service for our customers.

@@ -6,16 +6,22 @@ import HomePage from './pages/HomePage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import styles from './App.module.css';
+import App from './App.jsx';
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />,
+    element: <App />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: '/about-us',
-    element: <AboutUs />,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />,
+      },
+      {
+        path: '/about-us',
+        element: <AboutUs />,
+      },
+    ],
   },
 ]);
 

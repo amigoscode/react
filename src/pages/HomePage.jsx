@@ -1,14 +1,6 @@
-import { Link, NavLink } from 'react-router-dom';
-
 const HomePage = () => {
   return (
     <>
-      <nav>
-        <NavLink to="/" style={({ isActive }) => ({ color: isActive ? 'red' : 'black' })}>
-          Home
-        </NavLink>
-        <NavLink to="/about-us">About Us</NavLink>
-      </nav>
       <h1>Home</h1>
       <p>
         Welcome to our video streaming website! We offer a vast collection of movies and TV shows from different genres,
