@@ -1,12 +1,12 @@
-import { Suspense, lazy, useState } from 'react';
-import Card from './components/Card';
-import { posts } from './tech-data';
 import styles from './App.module.css';
-import Counter from './components/Counter';
-import CounterTwo from './components/CounterTwo';
+import HomePage from './pages/HomePage';
 
 const App = () => {
-  return <Counter />;
+  return (
+    <div className={styles.wrapper}>
+      <HomePage />
+    </div>
+  );
 };
 
 export default App;
