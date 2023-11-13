@@ -7,6 +7,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import styles from './App.module.css';
 import App from './App.jsx';
+import Details from './components/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <HomePage />,
+      },
+      {
+        path: '/:id',
+        element: <Details />,
       },
       {
         path: '/about-us',

@@ -10,7 +10,7 @@ const HomePage = () => {
         including action, comedy, romance, and science fiction.
       </p>
       {videos.map((video) => (
-        <Card key={video.slug} video={video} />
+        <Card key={video.id} video={video} />
       ))}
     </>
   );

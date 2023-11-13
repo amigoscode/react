@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Card.module.css';
 
 const Card = ({ video }) => {
@@ -9,9 +10,7 @@ const Card = ({ video }) => {
     <article className={styles.wrapper}>
       <h1 className={styles.title}>{video.title}</h1>
       <p className={styles.desc}>{video.description}</p>
-      <button onClick={handleClick} className={styles.button}>
-        View
-      </button>
+      <Link to={`/${video.id}`}>View</Link>
     </article>
   );
 };
