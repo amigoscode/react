@@ -1,14 +1,32 @@
+import { useEffect, useState } from 'react';
+import styles from '../components/Card.module.css';
 import { useParams } from 'react-router-dom';
-import { videos } from '../video-data';
 
 const Details = () => {
-  const { id } = useParams();
-  const video = videos.find((video) => video.id === parseInt(id));
+  const { name } = useParams();
+  const [pokemonData, setPokemonData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        const data = await response.json();
+        setPokemonData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (!pokemonData) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <h1>{video.title}</h1>
-      <p>{video.description}</p>
-      <p>{video.genre}</p>
+      <h1 className={styles.title}>{pokemonData.name}</h1>
+      <p className={styles.desc}>
+        height: {pokemonData.height}, weight: {pokemonData.weight}
+      </p>
     </>
   );
 };
