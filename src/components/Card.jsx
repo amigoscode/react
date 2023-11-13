@@ -2,7 +2,7 @@ import styles from './Card.module.css';
 
 const Card = ({ video }) => {
   const handleClick = () => {
-    alert('button clicked');
+    console.log('button clicked');
   };
 
   return (
