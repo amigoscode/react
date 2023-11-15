@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styles from './App.module.css';
-import HomePage from './pages/HomePage';
 
 const MyNavLink = (props) => {
   return (
@@ -9,14 +8,20 @@ const MyNavLink = (props) => {
     </NavLink>
   );
 };
+
 const App = () => {
   return (
     <div className={styles.wrapper}>
-      <nav>
-        <MyNavLink to="/">Home</MyNavLink>
-        <MyNavLink to="/about-us">About Us</MyNavLink>
-      </nav>
-      <Outlet />
+      <header>
+        <nav>
+          <MyNavLink to="/">Home</MyNavLink>
+          <MyNavLink to="/about-us">About Us</MyNavLink>
+          <MyNavLink to="/contact-us">Contact Us</MyNavLink>
+        </nav>
+      </header>
+      <section>
+        <Outlet />
+      </section>
     </div>
   );
 };

@@ -2,12 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomePage from './pages/HomePage.jsx';
-import ErrorPage from './pages/ErrorPage.jsx';
-import AboutUs from './pages/AboutUs.jsx';
 import styles from './App.module.css';
 import App from './App.jsx';
-import Details from './components/Details.jsx';
+import { HomePage, ErrorPage, AboutUs, ContactUs } from './pages/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +16,12 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: '/:name',
-        element: <Details />,
-      },
-      {
         path: '/about-us',
         element: <AboutUs />,
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs />,
       },
     ],
   },
