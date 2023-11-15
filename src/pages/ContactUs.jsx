@@ -15,7 +15,9 @@ const ContactUs = () => {
           <br />
           <textarea name="message" id="message" className={styles.message} placeholder="What's on your mind" />
         </section>
-        <button type="submit">Submit</button>
+        <button className={styles.submit} type="submit">
+          Submit
+        </button>
       </form>
     </>
   );
