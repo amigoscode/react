@@ -1,11 +1,17 @@
 const HomePage = () => {
   return (
     <>
-      <h1>Home</h1>
-      <p>
-        Welcome to our video streaming website! We offer a vast collection of movies and TV shows from different genres,
-        including action, comedy, romance, and science fiction.
-      </p>
+      <h1>Todo List</h1>
+      <form>
+        <section style={{ marginTop: '1rem' }}>
+          <label htmlFor="todoTask">Task</label>
+          <br />
+          <input style={{ width: '13rem' }} type="text" id="todoTask" name="todo" placeholder="buy chocolate" />
+        </section>
+      </form>
+      <section style={{ marginTop: '1rem', width: '14rem' }}>
+        <strong>Tasks</strong>
+      </section>
     </>
   );
 };
