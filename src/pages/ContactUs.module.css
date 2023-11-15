@@ -1,0 +1,15 @@
+.message {
+  height: 10rem;
+}
+
+.email {
+  margin-bottom: 2rem;
+}
+
+.message,
+.email {
+  width: 30rem;
+  padding: .5rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
