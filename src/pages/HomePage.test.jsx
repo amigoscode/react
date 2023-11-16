@@ -45,4 +45,9 @@ describe('HomePage', () => {
     const todoItems = screen.queryAllByRole('listitem');
     expect(todoItems).toHaveLength(1);
   });
+
+  test('renders page correctly', () => {
+    const { asFragment } = render(<HomePage />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
