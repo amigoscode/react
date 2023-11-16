@@ -6,5 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5000
+  },
+  test: {
+    global: true,
+    environment: 'jsdom',
+    setupFiles: './setupTests.js'
   }
 })
