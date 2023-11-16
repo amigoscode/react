@@ -51,5 +51,15 @@ describe('HomePage', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('allows us to check a todo item');
+  test('allows us to check a todo item', async () => {
+    await user.type(inputElement, 'buy dinner');
+    await user.type(inputElement, '{Enter}');
+
+    const checkButton = screen.getByRole('button', { name: 'Check todo' });
+    await user.click(checkButton);
+
+    const todoItem = screen.queryByRole('listitem');
+
+    expect(todoItem).toHaveClass('checked');
+  });
 });
