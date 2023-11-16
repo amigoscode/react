@@ -58,7 +58,7 @@ describe('HomePage', () => {
     const checkButton = screen.getByRole('button', { name: 'Check todo' });
     await user.click(checkButton);
 
-    const todoItem = screen.queryByRole('listitem');
+    const todoItem = screen.getByRole('listitem');
 
     expect(todoItem).toHaveClass('checked');
   });
