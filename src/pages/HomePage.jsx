@@ -12,6 +12,10 @@ const HomePage = () => {
     setTodoItem('');
   };
 
+  const deleteTodo = (todoItem) => {
+    setStoredTodos(storedTodos.filter((item) => item.id !== todoItem.id));
+  };
+
   return (
     <>
       <h1>Todo List</h1>
@@ -38,7 +42,12 @@ const HomePage = () => {
             <strong>Tasks</strong>
             <ul>
               {storedTodos.map((todo) => (
-                <li key={todo.id}>{todo.todo} </li>
+                <li key={todo.id}>
+                  {todo.todo}
+                  <button aria-label="Delete todo" onClick={() => deleteTodo(todo)}>
+                    ❌
+                  </button>
+                </li>
               ))}
             </ul>
           </>
