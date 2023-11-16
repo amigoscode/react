@@ -1,15 +1,16 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useLocalStorage } from '../useLocalStorage';
 
 const HomePage = () => {
   const [todoItem, setTodoItem] = useState('');
-  const [todoItems, setTodoItems] = useState([]);
+  const [storedTodos, setStoredTodos] = useLocalStorage('todoItems', []);
 
-  function handleSubmit(eventObj) {
+  const handleSubmit = (eventObj) => {
     eventObj.preventDefault();
-    setTodoItems([...todoItems, { todo: todoItem, id: nanoid() }]);
+    setStoredTodos([...storedTodos, { todo: todoItem, id: nanoid() }]);
     setTodoItem('');
-  }
+  };
 
   return (
     <>
@@ -30,13 +31,13 @@ const HomePage = () => {
         </section>
       </form>
       <section>
-        {todoItems.length === 0 ? (
+        {storedTodos.length === 0 ? (
           <div>Add a todo 👆</div>
         ) : (
           <>
             <strong>Tasks</strong>
             <ul>
-              {todoItems.map((todo) => (
+              {storedTodos.map((todo) => (
                 <li key={todo.id}>{todo.todo} </li>
               ))}
             </ul>
