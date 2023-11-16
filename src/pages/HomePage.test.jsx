@@ -50,4 +50,6 @@ describe('HomePage', () => {
     const { asFragment } = render(<HomePage />);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test('allows us to check a todo item');
 });

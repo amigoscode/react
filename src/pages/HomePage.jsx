@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import { useLocalStorage } from '../useLocalStorage';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
   const [todoItem, setTodoItem] = useState('');
@@ -8,12 +9,22 @@ const HomePage = () => {
 
   const handleSubmit = (eventObj) => {
     eventObj.preventDefault();
-    setStoredTodos([...storedTodos, { todo: todoItem, id: nanoid() }]);
+    setStoredTodos([...storedTodos, { todo: todoItem, id: nanoid(), checked: false }]);
     setTodoItem('');
   };
 
   const deleteTodo = (todoItem) => {
     setStoredTodos(storedTodos.filter((item) => item.id !== todoItem.id));
+  };
+
+  const checkTodo = (todoItem) => {
+    const updatedTodoItems = storedTodos.map((item) => {
+      if (item.id === todoItem.id) {
+        return { ...item, checked: !item.checked };
+      }
+      return item;
+    });
+    setStoredTodos(updatedTodoItems);
   };
 
   return (
@@ -42,8 +53,11 @@ const HomePage = () => {
             <strong>Tasks</strong>
             <ul>
               {storedTodos.map((todo) => (
-                <li key={todo.id}>
+                <li key={todo.id} className={todo.checked ? styles.checked : ''}>
                   {todo.todo}
+                  <button aria-label="Check todo" onClick={() => checkTodo(todo)}>
+                    ✅
+                  </button>
                   <button aria-label="Delete todo" onClick={() => deleteTodo(todo)}>
                     ❌
                   </button>
