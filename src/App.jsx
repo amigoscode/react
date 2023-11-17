@@ -1,29 +1,15 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import styles from './App.module.css';
+import { useState } from 'react';
 
-const MyNavLink = (props) => {
+export default function App() {
   return (
-    <NavLink className={({ isActive }) => (isActive ? 'link-red' : 'link-black')} to={props.to}>
-      {props.children}
-    </NavLink>
+    <>
+      <h1>Hello, world!</h1>
+      <Counter />
+    </>
   );
-};
+}
 
-const App = () => {
-  return (
-    <div className={styles.wrapper}>
-      <header>
-        <nav>
-          <MyNavLink to="/">Home</MyNavLink>
-          <MyNavLink to="/about-us">About Us</MyNavLink>
-          <MyNavLink to="/contact-us">Contact Us</MyNavLink>
-        </nav>
-      </header>
-      <section>
-        <Outlet />
-      </section>
-    </div>
-  );
-};
-
-export default App;
+function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>You clicked me {count} times</button>;
+}
