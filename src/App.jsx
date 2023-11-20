@@ -1,15 +1,17 @@
 import { useState } from 'react';
 
-export default function App() {
+const App = () => {
   return (
     <>
       <h1>Hello, world!</h1>
       <Counter />
     </>
   );
-}
+};
 
-function Counter() {
+const Counter = () => {
   const [count, setCount] = useState(0);
   return <button onClick={() => setCount(count + 1)}>You clicked me {count} times</button>;
-}
+};
+
+export default App;
